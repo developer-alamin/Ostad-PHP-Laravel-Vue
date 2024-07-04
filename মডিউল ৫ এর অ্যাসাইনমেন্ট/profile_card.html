@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Card Design..</title>
+	<style type="text/css" media="screen">
+		body {
+		    box-sizing: border-box;
+		    margin: 0px;
+		    font-family: Montserrat, sans-serif;
+		}
+
+		.root {
+		    width: 100%;
+		}
+
+		.container {
+		    width: 70%;
+		    margin: auto;
+		}
+
+		.row {
+		    display: flex;
+		    margin-top: 35px;
+		}
+
+		.right_side {
+		    width: 50%;
+		}
+
+		.left_side {
+		    width: 50%;
+		    padding-left: 13px;
+		}
+
+
+		.profile_img img {
+		    width: 160px;
+		    height: 160px;
+		    border-radius: 100%;
+		}
+
+		.card_body {
+		    text-align: center;
+		    padding-top: 24px;
+		}
+
+		.profile_card {
+		    box-shadow: 1px 1px 8px 0px #c9c5c5;
+		    border-radius: 8px;
+		    padding-bottom: 27px;
+		}
+		.card_head_pro {
+		    position: relative;
+		}
+
+		b {
+		    background: #a3a3a3;
+		    color: white;
+		    font-size: 18px;
+		    font-family: Montserrat, sans-serif;
+		    text-transform: uppercase;
+		    border-radius: 5px;
+		    position: absolute;
+		    padding: 5px;
+		    margin-top: 15px;
+		    margin-left: 15px;
+		}
+
+
+		.profile_title h3 {
+		    margin: 0px;
+		    font-size: 41px;
+		}
+
+		.profile_title {
+		    margin-top: 19px;
+		}
+
+		.profile_title span {
+		    font-size: 29px;
+		    font-weight: 600;
+		    color: #817d7d;
+		}
+
+		.profile_des p {
+		    color: #999999;
+		    font-size: 19px;
+		    line-height: 25px;
+		    padding-left: 20px;
+		    padding-right: 13px;
+		}
+		.profile_work_row {
+		    display: flex;
+		    justify-content: center;
+		    column-gap: 35px;
+		}
+
+		.profile_work_title {
+		    display: flex;
+		    flex-direction: column;
+		}
+
+		.profile_work_title span {
+		    font-size: 19px;
+		    color: #726868;
+		}
+
+		.profile_work {
+		    padding-top: 24px;
+		    padding-bottom: 24px;
+		}
+
+		.profile_work_title strong {
+		    font-weight: bold;
+		    font-size: 23px;
+		    padding-top: 10px;
+		    color: #8b8989;
+		}
+
+		.profile_action_row button {
+		    font-size: 23px;
+		    font-weight: 600;
+		    padding-top: 9px;
+		    padding-bottom: 8px;
+		    border: 2px solid gray;
+		    border-radius: 6px;
+		    margin-left: 10px;
+		    margin-right: 10px;
+		    width: 160px;
+		}
+
+		button.follow {
+		    background: none;
+		    color: #544f4f;
+		}
+
+		button.here_me {
+		    background: black;
+		    color: white;
+		}
+
+		button.follow:hover {
+		    background: black;
+		    color: white;
+		    transition: all ease 0.3s;
+		}
+
+		button.here_me:hover {
+		    background: none;
+		    color:#544f4f;
+		    transition: all ease 0.3s;
+		}
+		.left_side_heading_title h1 {font-size: 100px;margin-left: 95px;margin-top: 46px;}
+
+
+		.left_side_heading_title h6 {
+		    font-size: 36px;
+		    margin-left: 100px;
+		    text-transform: uppercase;
+		    font-weight: 500;
+		    margin-top: 0px;
+		    margin-bottom: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div class="root">
+		<div class="container">
+			<div class="row">
+				<div class="right_side">
+					<div class="profile_card">
+						<div class="card_head">
+							<div class="card_head_pro">
+								<b>pro</b>
+							</div>
+						</div>
+						<div class="card_body">
+							<div class="profile_img">
+								<img src="../img/alamin.jpg" alt="">
+							</div>
+							<div class="Profie_info">
+								<div class="profile_title">
+									<h3>Alamin Ali</h3>
+									<span>Developer</span>
+								</div>
+								<div class="profile_des">
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>
+								</div>
+							</div>
+							<div class="profile_work">
+								<div class="profile_work_row">
+									<div class="profile_work_title">
+										<span>Project</span>
+										<strong>18</strong>
+									</div>
+									<div class="profile_work_title">
+										<span>Following</span>
+										<strong>464</strong>
+									</div>
+									<div class="profile_work_title">
+										<span>Followers</span>
+										<strong>852</strong>
+									</div>
+								</div>
+							</div>
+							<div class="profile_action">
+								<div class="profile_action_row">
+									<button class="follow">
+										Follow
+									</button>
+									<button class="here_me">Here Me</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="left_side">
+					<div class="left_side_heading_title">
+						<h1>Minimal Profile Card</h1>
+						<h6>html & css</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
