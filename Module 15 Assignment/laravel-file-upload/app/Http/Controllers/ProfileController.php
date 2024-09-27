@@ -25,7 +25,7 @@ class ProfileController extends Controller
         $httpOnly = true;
 
        $cookie = Cookie::make($name,$value,$minutes,$path,$domain,$secure,$httpOnly);
-      
+        // return data
         return response(["data"=>$data,"status"=>200])->cookie($cookie);
     }
 }
