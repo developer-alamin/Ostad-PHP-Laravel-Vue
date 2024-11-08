@@ -23,7 +23,7 @@ class ProfileController extends Controller
         $domain = $_SERVER["SERVER_NAME"];
         $secure = false;
         $httpOnly = true;
-
+        
        $cookie = Cookie::make($name,$value,$minutes,$path,$domain,$secure,$httpOnly);
         // return data
         return response(["data"=>$data,"status"=>200])->cookie($cookie);
