@@ -23,9 +23,11 @@ class Product extends Model
             'product_id'         => 'required|string|unique:products',
             'name'               => 'required|string',
             'description'        => 'nullable',
-            'price'              => 'required|numeric',
+            'price'              => 'required',
             'stock'              => 'nullable|integer',
             'image'              => 'nullable|string',  
         ];
     }
+
+    
 }
