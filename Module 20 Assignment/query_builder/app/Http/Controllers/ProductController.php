@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Http\Response;
-
-
+use Illuminate\Validation\Rule;
+use validate;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view("index");
+        $products = Product::paginate(5);
+        return view("index",compact("products"));
     }
 
     /**
@@ -23,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view("create");
     }
 
     /**
@@ -31,21 +33,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+       
         $request->validate(Product::validationRules());
 
         $name = $request->name;
         $nameResize = str_replace(" ","", $name);
         $http = "http://" . $_SERVER['HTTP_HOST'] . "/";
 
-         if ($request->file("image")) {
-            $img = $request->file("image");
+         if ($request->file("photo")) {
+            $img = $request->file("photo");
             $imgPathName = $img->getClientOriginalName();
             $ExplodeImg = explode(".", $imgPathName);
             $endImg = end($ExplodeImg);
             $RandomPath = $nameResize.'img'. rand(5,150) . "." . $endImg;
-            $uploadImg = $http . "product/" . $RandomPath;
-            $img->move(public_path("product/"), $RandomPath);
+            $uploadImg = $http . "products/" . $RandomPath;
+            $img->move(public_path("products/"), $RandomPath);
+        }else {
+            $uploadImg = '';
         }
 
 
@@ -57,7 +61,7 @@ class ProductController extends Controller
             'stock' => $request->stock,
             'image' => $uploadImg
         ]);
-        return response()->json(['success' => true, 'message' => 'Product created successfully.'], Response::HTTP_OK);
+        return redirect()->back()->with("success","Product Create Success");
     }
 
     /**
@@ -65,33 +69,89 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-       return response()->json([
-            'success' => true,
-            'product'   => $product
-        ], Response::HTTP_OK);
+       return view("show",compact("product"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        return view("edit",compact("product"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
-        //
+
+        //dd($request->toArray());
+
+        // $request->validate([
+        //     'product_id'         => 'required|string'.Rule::unique("products")->ignore($product->id),
+        //     'name'               => 'required|string',
+        //     'description'        => 'nullable',
+        //     'price'              => 'required',
+        //     'stock'              => 'nullable|integer',
+        //     'image'              => 'nullable|string',  
+        // ]);
+
+        $name = $request->name;
+        $http = "http://" . $_SERVER['HTTP_HOST'] . "/";
+        $nameResize = str_replace(" ","", $name);
+
+        // product Image Updated
+        if ($request->file("photo")) {
+            $img = $request->file("photo");
+            $imgPathName = $img->getClientOriginalName();
+            $ExplodeImg = explode(".", $imgPathName);
+            $endImg = end($ExplodeImg);
+            $RandomPath = $nameResize.'img'. rand(5,150) . "." . $endImg;
+            $uploadImg = $http . "products/" . $RandomPath;
+            $img->move(public_path("products/"), $RandomPath);
+
+            // old image delete system
+             $oldImg = $product->image;
+             $explodeOldImg = explode("/", $oldImg);
+             $endOldImg = end($explodeOldImg);
+             $deletePublicPath = public_path("products/".$endOldImg);
+             if(File::exists($deletePublicPath)){
+                
+                File::delete($deletePublicPath);
+             }
+        }else{
+            $uploadImg = $product->image;
+        }
+
+
+        // Update the product Date
+        $product->product_id = $request->product_id;
+        $product->name = $name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+        $product->image = $uploadImg;
+        $product->update();
+        return redirect()->route("product.index")->with("update","Product Update Success");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+         // //rent image check and delete
+        if ($product->image) {
+            $img = $product->image;
+            $explodeImg = explode("/", $img);
+            $EndImg = end($explodeImg);
+            $deletePath = public_path("products/" .$EndImg);
+            if (File::exists($deletePath)) {
+                File::delete($deletePath);
+            }  
+        }
+        $product->delete();
+        return redirect()->back()->with("update","Product Deleted Success");
     }
 }
