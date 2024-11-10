@@ -4,7 +4,7 @@
 	<div class="col-12 mt-2">
 		<div class="card">
 			<div class="card-header d-flex align-items-center">
-				<a href="{{ route("product.index") }}" class="btn btn-outline-primary">All Product</a>
+				<a href="{{ route("products.index") }}" class="btn btn-outline-primary">All Products</a>
 				@if($product->image)
 				<img class="image" src="{{ $product->image }}" class="ms-auto"  alt="{{ $product->name }}">
 				@endif
@@ -15,7 +15,7 @@
 				      <div>{{ $error }}</div>
 				  @endforeach
 				@endif
-				<form action="{{ route("product.update",$product->id) }}" enctype='multipart/form-data' method="post">
+				<form action="{{ route("products.update",$product->id) }}" enctype='multipart/form-data' method="post">
 					@csrf
 					@method("PUT")
 					<div class="row">

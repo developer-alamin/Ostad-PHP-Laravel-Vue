@@ -4,7 +4,7 @@
 	<div class="col-8 mt-2 m-auto">
 		<div class="card">
 			<div class="card-header">
-				<a href="{{ route("product.index") }}" class="btn btn-outline-primary">All Product</a>
+				<a href="{{ route("products.index") }}" class="btn btn-outline-primary">All Products</a>
 			</div>
 			<div class="card-body">
 				<div class="d-flex align-items-center">

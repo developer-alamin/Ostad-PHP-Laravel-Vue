@@ -10,4 +10,4 @@ Route::get('/', function () {
 
 
  
-Route::resource('product', ProductController::class);
+Route::resource('products', ProductController::class);
