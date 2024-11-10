@@ -14,9 +14,24 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(5);
+
+        
+        $query = Product::query();
+         // Search functionality
+        if ($search = $request->input('search')) {
+            $query->where('product_id', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+        }
+        if ($request->input('sort') || $request->input('order')) {
+           $sort = $request->input('sort');
+           $order = $request->input('order');
+
+           $query->orderBy($sort,$order);
+        }
+
+        $products = $query->paginate(5);
         return view("index",compact("products"));
     }
 
@@ -46,8 +61,8 @@ class ProductController extends Controller
             $ExplodeImg = explode(".", $imgPathName);
             $endImg = end($ExplodeImg);
             $RandomPath = $nameResize.'img'. rand(5,150) . "." . $endImg;
-            $uploadImg = $http . "products/" . $RandomPath;
-            $img->move(public_path("products/"), $RandomPath);
+            $uploadImg = $http . "img/" . $RandomPath;
+            $img->move(public_path("img/"), $RandomPath);
         }else {
             $uploadImg = '';
         }
@@ -86,16 +101,11 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
 
-        //dd($request->toArray());
-
-        // $request->validate([
-        //     'product_id'         => 'required|string'.Rule::unique("products")->ignore($product->id),
-        //     'name'               => 'required|string',
-        //     'description'        => 'nullable',
-        //     'price'              => 'required',
-        //     'stock'              => 'nullable|integer',
-        //     'image'              => 'nullable|string',  
-        // ]);
+         $request->validate([
+            'product_id' => 'required|unique:products,product_id,' . $product->id,
+            'name' => 'required',
+            'price' => 'required|numeric',
+        ]);
 
         $name = $request->name;
         $http = "http://" . $_SERVER['HTTP_HOST'] . "/";
@@ -108,14 +118,14 @@ class ProductController extends Controller
             $ExplodeImg = explode(".", $imgPathName);
             $endImg = end($ExplodeImg);
             $RandomPath = $nameResize.'img'. rand(5,150) . "." . $endImg;
-            $uploadImg = $http . "products/" . $RandomPath;
-            $img->move(public_path("products/"), $RandomPath);
+            $uploadImg = $http . "img/" . $RandomPath;
+            $img->move(public_path("img/"), $RandomPath);
 
             // old image delete system
              $oldImg = $product->image;
              $explodeOldImg = explode("/", $oldImg);
              $endOldImg = end($explodeOldImg);
-             $deletePublicPath = public_path("products/".$endOldImg);
+             $deletePublicPath = public_path("img/".$endOldImg);
              if(File::exists($deletePublicPath)){
                 
                 File::delete($deletePublicPath);
@@ -133,7 +143,7 @@ class ProductController extends Controller
         $product->stock = $request->stock;
         $product->image = $uploadImg;
         $product->update();
-        return redirect()->route("product.index")->with("update","Product Update Success");
+        return redirect()->route("products.index")->with("update","Product Update Success");
     }
 
     /**
@@ -146,7 +156,7 @@ class ProductController extends Controller
             $img = $product->image;
             $explodeImg = explode("/", $img);
             $EndImg = end($explodeImg);
-            $deletePath = public_path("products/" .$EndImg);
+            $deletePath = public_path("img/" .$EndImg);
             if (File::exists($deletePath)) {
                 File::delete($deletePath);
             }  

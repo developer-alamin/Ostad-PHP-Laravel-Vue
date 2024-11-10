@@ -4,22 +4,18 @@
 	<div class="col-8 mt-2 m-auto">
 		<div class="card">
 			<div class="card-header">
-				<a href="{{ route("product.index") }}" class="btn btn-outline-primary">All Product</a>
+				<a href="{{ route("products.index") }}" class="btn btn-outline-primary">All Products</a>
 			</div>
 			<div class="card-body">
-
-				@if(!$errors->isEmpty())
-					@foreach ($errors->all() as $error)
-				      <div>{{ $error }}</div>
-				  @endforeach
+				@if($errors->has('product_id'))
+				{{ $errors }}
 				@endif
-
 				@if(Session::has("success"))
 				<div class="alert alert-success" role="alert">
 				  <b>{{ Session::get("success") }}</b>
 				</div>
 				@endif
-				<form action="{{ route("product.store") }}" enctype='multipart/form-data' method="post">
+				<form action="{{ route("products.store") }}" enctype='multipart/form-data' method="post">
 					@csrf
 					<div class="row">
 						<div class="col-6">
@@ -28,15 +24,16 @@
 						</div>
 						<div class="col-6">
 							<label for="product_id">Product Id:</label>
-							<input type="text" name="product_id" id="product_id" class="form-control" placeholder="Enter Product Id..">
+							<input type="text" name="product_id" id="product_id" class="form-control" placeholder="Enter Product Id.." required>
+							
 						</div>
 						<div class="col-6">
 							<label for="name">Name:</label>
-							<input type="text" name="name" id="product_id" class="form-control" placeholder="Enter Product Id..">
+							<input type="text" name="name" id="product_id" class="form-control" placeholder="Enter Product Id.." required>
 						</div>
 						<div class="col-6">
 							<label for="price">Price:</label>
-							<input type="text" name="price" id="price" class="form-control" placeholder="Enter Price..">
+							<input type="text" name="price" id="price" class="form-control" placeholder="Enter Price.." required>
 						</div>
 						<div class="col-6">
 							<label for="stock">Stock:</label>
