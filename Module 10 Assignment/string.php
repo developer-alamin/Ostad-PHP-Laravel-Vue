@@ -6,8 +6,8 @@
 
 		$strWithoutVowels = str_ireplace(["a", "e", "i", "o", "u"], "", $strings[$i]);
 
-       $VowelCount = strlen($strings[$i]) - strlen($strWithoutVowels);
-       echo "Orginal String : $strings[$i] , Vowel Count: $VowelCount, Reversed String: ".strrev($strings[$i])."<br>";
+        $VowelCount = strlen($strings[$i]) - strlen($strWithoutVowels);
+        echo "Orginal String : $strings[$i] , Vowel Count: $VowelCount, Reversed String: ".strrev($strings[$i])."<br>";
 	}
 
 ?>
