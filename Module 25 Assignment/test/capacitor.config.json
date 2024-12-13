@@ -1,0 +1,8 @@
+{
+  "appId": "this.mustb.be.a.unique.id.for.apple.store",
+  "appName": "test",
+  "webDir": "wwww",
+  "server": {
+    "androidScheme": "https"
+  }
+}
