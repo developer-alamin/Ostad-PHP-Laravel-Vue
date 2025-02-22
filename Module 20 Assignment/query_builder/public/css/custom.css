@@ -1,10 +1,218 @@
 label{
 	font-weight: bolder;
 }
-img.image{
+.custom_table_img{
 	width: 50px;
+	height: 50px;
+}
+img.admin_product_table_image{
+  width: 70px;
+  height: 70px;
+}
+img.product_up_photo{
+  width: 70px;
+  height: 70px;
+}
+img.product_pre_img {
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  display: none;
 }
 img.showImg{
 	width: 200px;
 	height: 200px;
 }
+
+.error{
+  color: red;
+}
+/* for modal zoom in css */
+.modal.fade .modal-dialog.modal-dialog-zoom {-webkit-transform: translate(0,0)scale(.5);transform: translate(0,0)scale(.5);}
+.modal.show .modal-dialog.modal-dialog-zoom {-webkit-transform: translate(0,0)scale(1);transform: translate(0,0)scale(1);}
+/* for modal zoom in css */
+
+/* custom loading css */
+
+.lds-hourglass,
+.lds-hourglass:after {
+  box-sizing: border-box;
+}
+.lds-hourglass {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #965eff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11;
+    opacity: 0.6;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid currentColor;
+  border-color: rgb(36 5 255) transparent rgb(36 5 255) transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
+
+
+
+/*product signle page css start form here*/
+img.product_single_image {
+    width: 200px;
+}
+
+
+.review-container {
+  text-align: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.star {
+  font-size: 25px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.star.hovered {
+  color: #f39c12; /* Color on hover */
+}
+
+.star.selected {
+  color: #e67e22; /* Color when selected */
+}
+
+#rating-display {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.product_rating {
+  display: inline-block;
+}
+
+.product_rating .star {
+  position: relative;
+}
+
+.product_rating .star.full {
+ color: #f39c12; 
+}
+
+.product_rating .star.half {
+  color: transparent; 
+  background: linear-gradient(90deg, #f39c12 50%, #ccc 50%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.product_varify {
+    background: #30ff2c;
+    display: f;
+    width: 100px;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 14px;
+}
+.product_short_title {
+    line-height: 50px;
+    margin-bottom: 0;
+    margin-top: 12px;
+}
+.review_section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.review_section a {
+    text-decoration: none;
+}
+
+
+.progress-container {
+  width: 100%;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.progress-item label{
+  margin-left: 5px;
+}
+
+.progress-item span {
+  width: 80px;
+  text-align: right;
+  margin-right: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.progress-line {
+  flex-grow: 1;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.progress-line.filled {
+  background-color: #f39c12;
+}
+.product_single_contact_itmes .item{
+  padding-block: 7px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+img.review_user {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+div.review_user{
+   width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: greenyellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+}
+/*product signle page css end form here*/
