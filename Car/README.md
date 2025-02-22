@@ -92,7 +92,9 @@ php artisan serve
 Contributions are welcome! Feel free to submit a Pull Request or open an issue.
 
 ## 📧 Contact
-For questions or feedback, reach out to: [arifulislam6460@gmail.com](arifulislam6460@gmail.com)
+For questions or feedback, reach out to: [mdalaminali125315@gmail.com
+](mdalaminali125315@gmail.com
+)
 
 ---
 
