@@ -98,5 +98,5 @@ For questions or feedback, reach out to: [mdalaminali125315@gmail.com
 
 ---
 
-**© 2025 Car Renting System: CODEARIF - Built with Laravel, Vue.js, and Inertia.js**
+**© 2025 Car Renting System: Alamin - Built with Laravel, Vue.js, and Inertia.js**
 
