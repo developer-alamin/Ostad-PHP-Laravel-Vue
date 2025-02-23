@@ -36,7 +36,7 @@ A complete **Car Renting System** built using **Laravel**, **Vue.js**, and **Ine
 
 1. **Clone the Repository:**
 ```bash
-git clone https://github.com/your-username/car-renting-system.git
+git clone https://github.com/developer-alamin/Ostad-PHP-Laravel-Vue/tree/master/Car
 cd car-renting-system
 ```
 
